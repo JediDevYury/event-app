@@ -1,16 +1,16 @@
-import {Slot} from "expo-router";
-import {AuthProvider} from "@/providers/AuthProvider";
+import { Slot } from 'expo-router';
+import { AuthProvider } from '@/providers/AuthProvider';
 
 const InitialLayout = () => {
-  return (<Slot/>)
+  return <Slot />;
 };
 
 const RootLayout = () => {
   return (
-    <AuthProvider>
-      <InitialLayout/>
-    </AuthProvider>
+   <AuthProvider>
+     <InitialLayout />
+   </AuthProvider>
   );
-}
+};
 
 export default RootLayout;
