@@ -2,8 +2,7 @@ import axios from "axios";
 import {createContext, PropsWithChildren, useContext, useEffect, useState} from 'react';
 import * as SecureStore from 'expo-secure-store';
 import 'core-js/stable/atob';
-import {jwtDecode, JwtPayload} from "jwt-decode";
-import { Platform } from 'react-native';
+import {jwtDecode} from "jwt-decode";
 
 let API_URL = process.env.EXPO_PUBLIC_API_URL;
 export const JWT_KEY = 'user-token';
@@ -16,7 +15,7 @@ export interface UserData {
 
 type AuthProps = {
   token: string | null;
-  onRegister: (email: string, password: string) => Promise<any>;
+  onRegister: (email: string, password: string, name: string) => Promise<any>;
   onLogin: (email: string, password: string) => Promise<any>;
   onLogout: () => Promise<void>;
   initialized: boolean;
@@ -35,7 +34,6 @@ export function useAuth() {
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [token, setToken] = useState<string | null>(null);
   const [initialized, setInitialized] = useState<boolean>(false);
-  const value = {}
 
   const handleLogin = async (email: string, password: string) => {
     try {
@@ -50,9 +48,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const handleRegister = async (email: string, password: string) => {
+  const handleRegister = async (email: string, password: string, name: string) => {
     try {
-      const result = await axios.post(`${API_URL}/auth/register`, { email, password });
+      const result = await axios.post(`${API_URL}/auth/register`, { email, password, name });
       return result;
     } catch (error: any) {
       throw { error: true, message: error.response.data.msg };
@@ -86,6 +84,15 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     loadToken();
   }, []);
+
+  const value = {
+    initialized,
+    onLogin: handleLogin,
+    onRegister: handleRegister,
+    onLogout: handleLogout,
+    token,
+    getUserData
+  };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

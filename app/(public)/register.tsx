@@ -6,7 +6,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator,
+  Alert
 } from 'react-native';
 import React, { useState } from 'react';
 import { useAuth } from '@/providers/AuthProvider';
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     marginBottom: 40,
-    color: '#eee'
+    color: Colors.lightGrey
   },
   checkboxWrapper: {flexDirection: 'row', justifyContent: 'center', marginTop: 10},
   termsText: {
@@ -48,10 +49,10 @@ const RegisterPage = () => {
   const handleRegistration = async () => {
     try {
       setLoading(true);
-      await onRegister!(email, password);
+      await onRegister!(email, password, name);
       await onLogin!(email, password);
     } catch (error: any) {
-      alert(error.message);
+      Alert.alert(error.message);
     } finally {
       setLoading(false);
     }

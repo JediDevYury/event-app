@@ -114,12 +114,8 @@ export const Avatar = ({onUploading}: AvatarProps) => {
      {showPlaceholder ? (
       <View style={styles.avatar} />
      ) : (
-      <Image
-       source={{ uri: avatar || require('@/assets/images/emptyAvatar.webp') }}
-       style={styles.avatar}
-       onError={onNoAvatar}
-      />
-     )};
+      <Image source={{ uri: avatar! }} style={styles.avatar} onError={onNoAvatar} />
+     )}
    </TouchableOpacity>
   );
 };

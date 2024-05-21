@@ -43,6 +43,7 @@ const Profile = () => {
 
   return (
    <View style={styles.container}>
+     <Text>Profile</Text>
      <Loader loading={uploading} />
      <Avatar onUploading={setUploading} />
      <Text style={styles.name}>{user?.name}</Text>
