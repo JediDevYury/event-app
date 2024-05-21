@@ -4,5 +4,7 @@ export default {
   background: '#0A0F1C',
   orange: '#f27c62f9',
   inputFieldBorder: '#8494f7',
-  blackBright: 'rgba(0, 0, 0, 0.5)',
+  halfTransparentBlack: 'rgba(0, 0, 0, 0.5)',
+  tabBarInactiveTintColor: '#999',
+  translucentBlack: 'rgba(0,0,0,0.7)'
 };
