@@ -35,18 +35,14 @@ export default () => {
       }}
     >
       <Tabs.Screen
-        name="events"
-        options={{
-          tabBarLabel: "Events",
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons
-             name="calendar-outline"
-             size={size}
-             color={color}
-            />
-          ),
-        }}
+       name="events"
+       options={{
+         tabBarLabel: 'Events',
+         headerShown: false,
+         tabBarIcon: ({ color, size }) => (
+          <Ionicons name="calendar-outline" size={size} color={color} />
+         ),
+       }}
       />
       <Tabs.Screen
        name="my-events"
