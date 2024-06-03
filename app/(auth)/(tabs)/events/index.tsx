@@ -99,7 +99,7 @@ const EventsList = () => {
   }
 
   return (
-   <View>
+   <View style={[styles.container]}>
     {isPending && (<ActivityIndicator size="small" color={Colors.primary} />)}
     <FlatList
       contentContainerStyle={{ padding: 14, paddingBottom: tabBarHeight }}
@@ -115,6 +115,7 @@ const EventsList = () => {
       }
     />
      {/* FAB */}
+     <Text>EventsList</Text>
      <Link href="/(auth)/(modals)/new" style={{ position: 'absolute', bottom: tabBarHeight + 20, right: 20 }} asChild>
        <TouchableOpacity style={styles.createNewEventButton}>
           <Text style={{ color: Colors.white, fontSize: 24 }}>+</Text>
